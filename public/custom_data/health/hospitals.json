@@ -1,0 +1,64 @@
+{
+    "hospitals": [
+      {
+        "name": "Pine Valley Medical Center",
+        "address": "4511 Linden Avenue",
+        "lga": "eti osa",
+        "type": "private"
+      },
+      {
+        "name": "Honor Medical Center",
+        "address": "1668  Winding Way",
+        "lga": "ikeja",
+        "type": "state"
+      },
+      {
+        "name": "Fairmont Community Hospital",
+        "address": "4511 Linden Avenue",
+        "lga": "epe",
+        "type": "federal"
+      },
+      {
+        "name": "Northshore Clinic",
+        "address": "457  Geraldine Lane",
+        "lga": "ojo",
+        "type": "private"
+      },
+      {
+        "name": "Ruby Valley Hospital",
+        "address": "1052  Parrill Court",
+        "lga": "badagry",
+        "type": "private"
+      },
+      {
+        "name": "Oakdale Community Hospital",
+        "address": "1007  Holden Street",
+        "lga": "epe",
+        "type": "state"
+      },
+      {
+        "name": "Tulip Medical Center",
+        "address": "1033  Holden Street",
+        "lga": "epe",
+        "type": "federal"
+      },
+      {
+        "name": "Hope Garden Clinic",
+        "address": "565  Dog Hill Lane",
+        "lga": "agege",
+        "type": "private"
+      },
+      {
+        "name": "Horizon Medical Center",
+        "address": "854  Spring Street",
+        "lga": "eti-osa",
+        "type": "federal"
+      },
+      {
+        "name": "Fountain Valley Hospital",
+        "address": "3419  Shingleton Road",
+        "lga": "ojo",
+        "type": "private"
+      }
+    ]
+  }
