@@ -6,8 +6,8 @@ import axios from 'axios'
 
 export default function Citizen() {
 
-    const [doctors, setDoctors]= useState([]);
-    const [hospitals, setHospitals]= useState([]);
+    const [citizens, setCitizens]= useState([]);
+    const [residents, setResidents]= useState([]);
     const [isError, setIsError] = useState(false);
 	const [isSucess, setIsSucess] = useState(false);
     const [message, setMessage] = useState(false);
@@ -17,7 +17,7 @@ export default function Citizen() {
         let scripts = [
             { src: "/assets/js/custom.js" },
         ]
-
+        // http://api.citizens.staging.ekoopenbuild.com/citizens
         scripts.map(item => { 
             const script = document.createElement("script")
             script.src = item.src
@@ -25,18 +25,18 @@ export default function Citizen() {
             document.body.appendChild(script)
         }) 
 
-        getDoctors();
+        getCitizens();
 
-        getHospitals();
+        getResidents();
       }, []);
 	  
 
-      const getDoctors = () => {
-            axios.get('/public/custom_data/health/doctors.json')
+      const getCitizens = () => {
+            axios.get('http://api.citizens.staging.ekoopenbuild.com/citizens')
             .then(result => {
 
-                    console.log(result.data.doctors)
-                    setDoctors(result.data.doctors)
+                    console.log(result.data.OCXPayload.data.data)
+                    setCitizens(result.data.OCXPayload.data.data)
                     
             }).catch(err =>{
                 // setMessage(err.response.data.message)
@@ -44,11 +44,11 @@ export default function Citizen() {
             })
       }
 
-      const getHospitals = () => {
-            axios.get('/public/custom_data/health/hospitals.json')
+      const getResidents = () => {
+            axios.get('http://api.citizens.staging.ekoopenbuild.com/residents')
             .then(result => {
-                    console.log(result.data.hospitals)
-                    setHospitals(result.data.hospitals)
+                    console.log(result.data.OCXPayload.data.data)
+                    setResidents(result.data.OCXPayload.data.data)
                     
             }).catch(err =>{
                 // setMessage(err.response.data.message)
@@ -56,20 +56,22 @@ export default function Citizen() {
             })
         }
 
-
-
-
-        const doctorsGrid = () => {
-            return doctors && doctors.map(({ index, specialization, lastname, firstname, phone_numer, sex }) => {
+        const citizensGrid = () => {
+            return citizens && citizens.map(({ id, lastname, firstname, bvn, address, employment_address, employment_status, relationship_status, spouses_fullname, state_of_origin  }) => {
                 return (
-                        <article key={phone_numer}>
-                            <div align="center"> <img src="/assets/images/doctors.png" alt="tshirt photo" style={{height : "150px", width : "150px"}}/> </div>
+                        <article key={id}>
+                            <div align="center"> <img src="/assets/images/user-avatar-placeholder.jpeg" alt="tshirt photo" style={{height : "150px", width : "150px"}}/> </div>
                             <div className="text">
-                                <h3>specialization: {specialization} </h3>
+                                <h3>Citizens </h3>
                                 <p> Firstname: {firstname} </p>
                                 <p> Lastname: {lastname} </p>
-                                <p> Phone: {phone_numer} </p>
-                                <p> Sex: {sex} </p>
+                                <p> bvn: {bvn} </p>
+                                <p> Address: {address} </p>
+                                <p> Employment Address: {employment_address} </p>
+                                <p> Employment Status: {employment_status} </p>
+                                <p> Relationship Status: {relationship_status} </p>
+                                <p> Spouses Fullname: {spouses_fullname} </p>
+                                <p> State Of Origin: {state_of_origin} </p>
 
                             </div>
                         </article>
@@ -77,16 +79,19 @@ export default function Citizen() {
             })
         }
 
-        const hospitalGrid = () => {
-            return hospitals && hospitals.map(({ index, address, lga, name, type }) => {
+
+
+        const residentsGrid = () => {
+            return residents && residents.map(({ id, firstname, lastname, house_number, street }) => {
                 return (
-                        <article key={name}>
-                            <div align="center"> <img src="/assets/images/hospital.png" alt="tshirt photo" style={{height : "150px", width : "150px"}}/> </div>
+                        <article key={id}>
+                            <div align="center"> <img src="/assets/images/house.png" alt="tshirt photo" style={{height : "150px", width : "150px"}}/> </div>
                             <div className="text">
-                                <h3> {name} </h3>
-                                <p> <b> type: </b> {type} </p>
-                                <p> <b> lga: </b> {lga} </p>
-                                <p> <b> address: </b> {address} </p>
+                                <h3> Resident </h3>
+                                <p> <b> First Name: </b> {firstname} </p>
+                                <p> <b> Last Name: </b> {lastname} </p>
+                                <p> <b> House Number: </b> {house_number} </p>
+                                <p> <b> Street: </b> {street} </p>
                             </div>
                         </article>
                 )
@@ -121,7 +126,7 @@ export default function Citizen() {
 					<div className="dashboard-box margin-top-0">
 
 						<div className="headline">
-							<h3><i className="icon-material-outline-account-circle"></i> Health</h3>
+							<h3><i className="icon-material-outline-account-circle"></i> Citizens</h3>
 						</div>
 
 						<div className="content with-padding padding-bottom-0">
@@ -147,7 +152,7 @@ export default function Citizen() {
                         <div id="test1" className="dashboard-box">
 
                             <div className="headline">
-                                <h3><i className="icon-line-awesome-hospital-o"></i> Doctors </h3>
+                                <h3><i className="icon-line-awesome-hospital-o"></i> Citizens </h3>
                             </div>
 
 						<div className="content with-padding padding-bottom-0">
@@ -156,7 +161,7 @@ export default function Citizen() {
 
                             <main className="grid">
 
-                                { doctorsGrid() }
+                                { citizensGrid() }
 
                             </main>
                         </div> 
@@ -178,7 +183,7 @@ export default function Citizen() {
                                 <div id="test1" className="dashboard-box">
 
                                     <div className="headline">
-                                        <h3><i className="icon-line-awesome-hospital-o"></i> Hospitals </h3>
+                                        <h3><i className="icon-line-awesome-hospital-o"></i> Residents </h3>
                                     </div>
 
                                     <div className="content with-padding padding-bottom-0">
@@ -187,7 +192,7 @@ export default function Citizen() {
 
                                         <main className="grid">
 
-                                            { hospitalGrid() }
+                                            { residentsGrid() }
 
                                         </main>
                                     </div> 

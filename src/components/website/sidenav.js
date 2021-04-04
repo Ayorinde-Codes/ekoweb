@@ -33,7 +33,7 @@ export default function Sidenav(props) {
 
                         <li><Link to="/transport" style={{ textDecoration: 'none' }}><i className="icon-line-awesome-users"></i> Transport </Link></li>
                         
-                        {/* <li><Link to="/kyc" style={{ textDecoration: 'none' }}><i className="icon-line-awesome-users"></i> Citizen </Link></li> */}
+                        <li><Link to="/citizens" style={{ textDecoration: 'none' }}><i className="icon-line-awesome-users"></i> Citizens </Link></li>
                     </ul>
 
                     {/* <ul data-submenu-title="Account">
