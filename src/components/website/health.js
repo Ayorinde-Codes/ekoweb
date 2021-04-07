@@ -51,6 +51,7 @@ export default function Health() {
             axios.get('/public/custom_data/health/hospitals.json')
             .then(result => {
                     console.log(result.data.hospitals)
+                    
                     setHospitals(result.data.hospitals)
                     
             }).catch(err =>{

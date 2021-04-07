@@ -32,7 +32,7 @@ export default function Citizen() {
 	  
 
       const getCitizens = () => {
-            axios.get('http://api.citizens.staging.ekoopenbuild.com/citizens')
+            axios.get('https://api.citizens.staging.ekoopenbuild.com/citizens')
             .then(result => {
 
                     console.log(result.data.OCXPayload.data.data)
@@ -45,7 +45,7 @@ export default function Citizen() {
       }
 
       const getResidents = () => {
-            axios.get('http://api.citizens.staging.ekoopenbuild.com/residents')
+            axios.get('https://api.citizens.staging.ekoopenbuild.com/residents')
             .then(result => {
                     console.log(result.data.OCXPayload.data.data)
                     setResidents(result.data.OCXPayload.data.data)
